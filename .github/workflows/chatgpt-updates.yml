@@ -1,0 +1,39 @@
+name: ChatGPT File Updates
+
+on:
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: 'Path of the file to update (e.g. index.html)'
+        required: true
+      file_content:
+        description: 'New file content (as plain text or base64-encoded if large)'
+        required: true
+      commit_message:
+        description: 'Commit message for this change'
+        required: true
+        default: 'Automated update from ChatGPT'
+
+jobs:
+  update-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Apply file change
+        run: |
+          echo "${{ github.event.inputs.file_content }}" > "${{ github.event.inputs.file_path }}"
+          git config user.name "ChatGPT Automation"
+          git config user.email "chatgpt-bot@noreply.github.com"
+          git add "${{ github.event.inputs.file_path }}"
+          git commit -m "${{ github.event.inputs.commit_message }}"
+          git push origin HEAD:chatgpt-update-${{ github.run_number }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "Automated update from ChatGPT"
+          body: "This pull request contains an automated update proposed by ChatGPT."
+          branch: chatgpt-update-${{ github.run_number }}
