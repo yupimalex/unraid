@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unraid Services Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #00bcd4;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+      background-color: #00bcd4;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+    }
+    a:hover {
+      background-color: #008c9e;
+    }
+  </style>
+</head>
+<body>
+  <h1>Unraid Services</h1>
+  <ul>
+    <li><a href="http://192.168.2.167:8080" target="_blank">Transmission</a></li>
+    <li><a href="http://192.168.2.167:8989" target="_blank">Sonarr</a></li>
+    <li><a href="http://192.168.2.167:7878" target="_blank">Radarr</a></li>
+    <li><a href="http://192.168.2.167:9696" target="_blank">Prowlarr</a></li>
+    <li><a href="http://192.168.2.167:5055" target="_blank">Jellyseerr</a></li>
+    <li><a href="http://192.168.2.167:8096" target="_blank">Jellyfin</a></li>
+    <li><a href="https://192.168.2.167:9443" target="_blank">Portainer</a></li>
+  </ul>
+</body>
+</html>
